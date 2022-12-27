@@ -3,7 +3,7 @@
 //Alexander Cordero Gómez
 //Daniel Salanova Dmitriyev
 
-#include "my_lib.h"
+#include "my_lib.c"
 #include <pthread.h>
 #define NUM_THREADS 10
 #define NUM_ITER 1000000
