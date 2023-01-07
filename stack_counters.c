@@ -3,7 +3,7 @@
 //Alexander Cordero Gómez
 //Daniel Salanova Dmitriyev
 
-#include "my_lib.c"
+#include "my_lib.h"
 #include <stdio.h>
 #include <string.h>
 #include <pthread.h>
@@ -14,6 +14,9 @@ pthread_t arrayHilos[NUM_THREADS];
 struct my_stack *stack;
 pthread_mutex_t semaforo = PTHREAD_MUTEX_INITIALIZER;
 void *z;
+void *worker(void *ptr);
+void inicializar_pila(char *nombre);
+void imprimir_datos_stack(struct my_stack *stack);
 
 
 /**
@@ -57,11 +60,11 @@ int main(int argc, char *argv[]){
             printf("%i) Thread %li created \n",i,arrayHilos[i]);
         }
 
-        void **estatus;//Estado del hilo
+        //void **estatus;//Estado del hilo
         
         //Esperamos a que acaben
         for(int i = 0; i<NUM_THREADS;i++){
-            pthread_join(arrayHilos[i],estatus);
+            pthread_join(arrayHilos[i],NULL);
         }
         
         //Imprimos todos los datos del stack

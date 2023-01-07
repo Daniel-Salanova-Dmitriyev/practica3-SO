@@ -313,7 +313,7 @@ struct my_stack *my_stack_read(char *filename) {
     int pila_size = 0;  //Tamaño de la pila
     int fd = open(filename, O_RDONLY); //Abrimos el fichero
     if(fd == -1){ //En caso de error
-        perror("Error: ");
+        //perror("Error: ");
         return NULL;
     }
 

@@ -10,8 +10,8 @@ OBJS=$(SOURCES:.c=.o)
 
 all: $(OBJS) $(PROGRAMS)
 
-#$(PROGRAMS): $(LIBRARIES) $(INCLUDES)
-#	$(CC) $(LDFLAGS) $(LIBRARIES) $@.o -o $@
+$(PROGRAMS): $(LIBRARIES) $(INCLUDES)
+	$(CC) $(LDFLAGS) $(LIBRARIES) $@.o -o $@
 
 
 stack_counters: stack_counters.o $(LIBRARIES) $(INCLUDES)
