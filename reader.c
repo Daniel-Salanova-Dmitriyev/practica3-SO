@@ -17,7 +17,7 @@ int main(int argc, char *argv[]){
         int fd = open(argv[1], O_RDONLY); //Fichero a abrir
         if(fd == -1){ //Fichero no existe
             close(fd); //Cerramos el fichero
-            perror("No existe el fichero!!\n");
+            perror("Couldn't open stack file \n");
             return EXIT_FAILURE;
         }else{ //Fichero existe
             close(fd);
@@ -45,7 +45,7 @@ int main(int argc, char *argv[]){
             printf("Items: %i Sum: %i Min: %i Max: %i Average: %i\n", size, sum, min, max, sum/size);  
         } 
     }else{ //No hay argumentos
-        perror("No existe fichero con pila!!\n");
+        perror("USAGE ./reader stack_file\n");
         return EXIT_FAILURE;
     }
 }
