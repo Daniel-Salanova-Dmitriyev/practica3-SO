@@ -69,18 +69,31 @@ int main(int argc, char *argv[]){
             }
         }
 
-        //En este punto tenemos ya la pila o creada o con datos añadidos
+//En este punto tenemos ya la pila o creada o con datos añadidos
 
         //Creamos los hilos
-        for(int i = 0; i<10;i++){
-            pthread_t thread_id;
-            arrayHilos[i] = thread_id;
-            pthread_create(thread_id,NULL, worker, NULL);
+        pthread_t threads[NUM_THREADS];
+        for (int i = 0; i < NUM_THREADS; i++)
+        {
+            pthread_create(&threads[i], NULL, worker, NULL);
+            printf("%d) Hilo %ld creado\n", i, threads[i]);
         }
 
-        //MAL!!!! CAMBIAR!!
-        pthread_mutex_init(&semaforo,NULL); 
+        // Esperar hasta que los hilos acaben
+        for (int i = 0; i < NUM_THREADS; i++)
+        {
+            pthread_join(threads[i], NULL);
+        }
 
+        // Guardar en la pila
+        int var = my_stack_write(stack, argv[1]);
+        printf("Longitud de la pila: %d\n", my_stack_len(stack));
+        printf("Elementos escritos de la pila al fichero: %d\n", var);
+        var = my_stack_purge(stack);
+        printf("Bytes eliminados: %d\n\n", var);
+
+        pthread_exit(0);
+        return EXIT_SUCCESS;
 
 
 
