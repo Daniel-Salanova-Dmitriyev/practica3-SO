@@ -16,9 +16,9 @@ int main(int argc, char *argv[]){
     struct my_stack *stack;
     if(argv[1]){ //Si se ha escrito un nombre de fichero
         stack = my_stack_read(argv[1]);
-        if(stack){
+        if(stack){ //Si la pila no esta vacía
             if(my_stack_len(stack) >= NUM_THREADS){ //Si el tamaño es igual o superior al de hilos
-                int size = my_stack_len(stack);//Vemos el tamoño del fichero            
+                int size = my_stack_len(stack);//Vemos el tamaño del fichero            
                 printf("Stack length: %i\n", size);
                 int *data;                       
                 int max = INT_MIN;//Inicializamos el máximo
@@ -36,11 +36,8 @@ int main(int argc, char *argv[]){
                     sum += *data;
 
                 }
-                 printf("Items: %i Sum: %i Min: %i Max: %i Average: %i\n", size, sum, min, max, sum/NUM_THREADS);  
-
-
-
-
+                printf("Items: %i Sum: %i Min: %i Max: %i Average: %i\n", size, sum, min, max, sum/NUM_THREADS);  
+                
             }else{
                 printf("No exists enough elements, stack_length < number of threads \n");
                 return EXIT_FAILURE;

@@ -27,6 +27,10 @@ struct my_data {
     int val;
 };
 
+/**
+    Función que ejecutará cada uno de los hilos, recoge un dato de la pila, le suma 1, y lo inserta dentro 
+    de nuevo.
+*/
 void *worker(void *ptr){
     for(int i = 0; i<NUM_ITER;i++){
 
@@ -136,11 +140,14 @@ void inicializar_pila(char *nombre){
     }
 }
 
+/**
+    Función que imprime todos los datos que contiene la pila pasada por parámetro
+*/
 void imprimir_datos_stack(struct my_stack *stack){
     struct my_stack_node *nodo = stack->top; //Primer dato
     while(nodo != NULL){
         printf("%d\n", *((int *)nodo->data));    
-        nodo = nodo->next;
+        nodo = nodo->next; //Pasamos al siguiente nodo
     }
 
 }
