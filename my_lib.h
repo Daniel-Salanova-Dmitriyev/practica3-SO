@@ -1,3 +1,8 @@
+//Creadores
+//Arkadiy Kosyuk
+//Alexander Cordero Gómez
+//Daniel Salanova Dmitriyev
+
 /* lib.h librería con las funciones equivalentes a las
 de <string.h> y las funciones y estructuras para el
 manejo de una pila */

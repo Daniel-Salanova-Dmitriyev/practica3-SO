@@ -32,10 +32,10 @@ void *worker(void *ptr){
 
         //Recogida del dato
         pthread_mutex_lock(&semaforo);
-        struct my_data *dato = my_stack_pop(stack);
+        int *dato = my_stack_pop(stack);
         pthread_mutex_unlock(&semaforo);
         
-        dato->val += 1; // Incrementamos
+        (*dato) += 1; // Incrementamos
 
         //Incorporacion
         pthread_mutex_lock(&semaforo);
@@ -50,7 +50,7 @@ void *worker(void *ptr){
 int main(int argc, char *argv[]){
     if(argv[1]){ //SI existe nombre de pila   
         inicializar_pila(argv[1]);
-        printf("Tamaño pila: %i\n", my_stack_len(stack));
+        
 
         //En este punto tenemos ya la pila o creada o con datos añadidos 
         
